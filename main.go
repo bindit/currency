@@ -1,16 +1,13 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
 	"net/http"
-	"currency/controllers"
+	"currency/web"
 )
 
 func main() {
-	router := mux.NewRouter()
+	app := web.App{}
+	app.Init()
 
-	indexController := controllers.IndexController{}
-	indexController.Init(router)
-
-	http.ListenAndServe(":8080", router)
+	http.ListenAndServe(":8080", app.Router())
 }
