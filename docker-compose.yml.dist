@@ -1,0 +1,10 @@
+version: '2'
+services:
+  app:
+    build: .
+    working_dir: /go/src/currency
+    command: go run main.go
+    volumes:
+      - .:/go/src/currency
+    ports:
+      - "8000:8080"
