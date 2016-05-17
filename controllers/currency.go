@@ -4,6 +4,7 @@ import (
 	"github.com/gorilla/mux"
 	"net/http"
 	"fmt"
+	"currency/model"
 )
 
 type CurrencyController struct {
@@ -17,7 +18,9 @@ func (cc *CurrencyController) Init(router *mux.Router) {
 }
 
 func (cc *CurrencyController) list(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("PRINT LIST OF CURRENCIES")
+	c := model.NewCurrency("USD", 1)
+
+	fmt.Printf("PRINT LIST OF CURRENCIES: %s - converter: %f\n", c.GetName(), c.GetConverter())
 }
 
 func (cc *CurrencyController) exchange(w http.ResponseWriter, r *http.Request) {
